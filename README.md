@@ -408,6 +408,10 @@ The Team Lead must obtain explicit approval before external side effects such as
 
 Boardroom is available under the [MIT License](LICENSE).
 
+## Contributing
+
+Contributions use feature branches, Conventional Commits, pull-request review, and required cross-platform CI. Read [CONTRIBUTING.md](CONTRIBUTING.md) before starting a change.
+
 ## Design principles
 
 - Progressive discovery over giant prompts.
