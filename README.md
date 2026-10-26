@@ -345,8 +345,8 @@ The release workflow runs when a tag matching `v*` is pushed. It requires the ta
 
 ```bash
 # After updating VERSION and merging a release-ready commit:
-git tag v1.4.0
-git push origin v1.4.0
+git tag v1.4.1
+git push origin v1.4.1
 ```
 
 The remote installers always download the assets from the latest published release. Test release candidates before moving the latest release pointer.

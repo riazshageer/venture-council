@@ -115,6 +115,21 @@ class BoardroomTests(unittest.TestCase):
             )
             self.assertTrue((boardroom_home / "core/council/index.md").is_file())
             self.assertTrue((boardroom_home / "app/skills/boardroom/SKILL.md").is_file())
+            budget = subprocess.run(
+                [
+                    sys.executable,
+                    str(boardroom_home / "app/scripts/audit_context_budget.py"),
+                    "--core",
+                    str(boardroom_home / "core"),
+                    "--json",
+                ],
+                cwd=client_repo,
+                env=env,
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(budget.returncode, 0, budget.stdout + budget.stderr)
             installed_skill = codex_home / "skills/boardroom"
             self.assertTrue(installed_skill.is_dir())
             if os.name != "nt":
