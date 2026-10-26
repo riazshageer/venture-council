@@ -22,6 +22,19 @@ class BoardroomTests(unittest.TestCase):
         )
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
+    def test_context_budgets(self) -> None:
+        result = subprocess.run(
+            [sys.executable, str(ROOT / "scripts/audit_context_budget.py"), "--json"],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        audit = json.loads(result.stdout)
+        self.assertLessEqual(audit["direct_words"], 475)
+        self.assertLessEqual(audit["consult_bootstrap_words"], 725)
+
     def test_packages_are_self_contained(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             tmp_path = Path(temporary)
@@ -73,8 +86,8 @@ class BoardroomTests(unittest.TestCase):
         team_lead = (ROOT / "skills/boardroom/SKILL.md").read_text(encoding="utf-8")
         quality_gates = (ROOT / "core/protocols/quality-gates.md").read_text(encoding="utf-8")
         self.assertIn("business-foundational-reframing", playbook_index)
-        self.assertIn("foundational challenge screen", team_lead.lower())
-        self.assertIn("the do-not-reframe case can win", quality_gates.lower())
+        self.assertIn("screen for conflicting unit/system economics", team_lead.lower())
+        self.assertIn("the do-not-reframe case may win", quality_gates.lower())
 
     def test_global_install_separates_runtime_knowledge_and_repository(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
