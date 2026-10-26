@@ -11,6 +11,7 @@ Apply proportionately. Direct and ordinary Consult work use the core gate; Counc
 
 ## Extended gate
 
+- Council/Program completed every required `council-session.md` state; the Team Lead—not an employee—made and delivered the integrated decision.
 - Specialists map to named decisions; conflicts are resolved or preserved as dissent.
 - Financial figures include units, horizon, scenario, assumptions, and reconcile at the presented level.
 - Regulated or external actions have boundaries and approval gates.
