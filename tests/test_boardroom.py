@@ -8,9 +8,6 @@ import tempfile
 import unittest
 from pathlib import Path
 
-import yaml
-
-
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -55,10 +52,9 @@ class BoardroomTests(unittest.TestCase):
         playbook = ROOT / "core/playbooks/business/foundational-reframing.md"
         content = playbook.read_text(encoding="utf-8")
         _, frontmatter, body = content.split("---", 2)
-        metadata = yaml.safe_load(frontmatter)
 
-        self.assertEqual(metadata["owner"], "business-strategist")
-        self.assertEqual(metadata["status"], "active")
+        self.assertIn("owner: business-strategist", frontmatter)
+        self.assertIn("status: active", frontmatter)
         for heading in (
             "## Activation signals",
             "## Method",
