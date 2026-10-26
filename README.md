@@ -32,14 +32,49 @@ Employees are not fictional executives whose opinions are generated for entertai
 
 ## Requirements
 
-- Python 3.10 or later for validation and packaging.
-- OpenAI Codex or Claude Code with filesystem access to the installed package.
+- Python 3.10 or later.
+- At least one of OpenAI Codex or Claude Code installed and available on `PATH`.
+- Windows 10/11, macOS, or Linux.
 - Internet/research tooling for time-sensitive work. Boardroom can operate without it, but must label unsupported assumptions and cannot responsibly make current platform, price, legal, or market claims.
 - Optional MCP servers or connectors for data and actions relevant to an engagement.
 
 Boardroom contains no runtime dependency and requires no API key by itself.
 
-## Install globally
+Check a downloaded copy before installation:
+
+```bash
+python3 scripts/check_prereqs.py --provider all
+```
+
+On Windows PowerShell, use `python` or `py -3` in place of `python3` when appropriate.
+
+## Quick install from the latest GitHub release
+
+No repository clone is required. On Linux or macOS:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/rshageer/boardroom/main/install.sh | sh
+```
+
+Install for only one provider by downloading the script before running it:
+
+```bash
+curl -fsSLO https://raw.githubusercontent.com/rshageer/boardroom/main/install.sh
+sh install.sh codex   # or: sh install.sh claude
+```
+
+On Windows PowerShell:
+
+```powershell
+irm https://raw.githubusercontent.com/rshageer/boardroom/main/install.ps1 -OutFile install.ps1
+.\install.ps1 -Provider all
+```
+
+Review remote scripts before running them when required by your security practices. Both scripts download the immutable archives attached to the latest GitHub Release and run the same Python installer described below.
+
+If this repository is published under a different owner or name, set `BOARDROOM_GITHUB_REPOSITORY` to `owner/repository` before running the downloaded script, or pass `-Repository owner/repository` to `install.ps1`.
+
+## Install from a clone or downloaded archive
 
 Clone, copy, or extract the distribution, then run:
 
@@ -54,11 +89,12 @@ The default global application home is:
 ```text
 ${XDG_DATA_HOME}/boardroom     # when XDG_DATA_HOME is set
 ~/.local/share/boardroom       # otherwise
+%LOCALAPPDATA%\Boardroom       # Windows
 ```
 
 Set `BOARDROOM_HOME` before installation and use to choose a different location. The installer places replaceable runtime files under `app/`, writable shared knowledge under `core/`, the previous bundled baseline under `bundled-core/`, conflicts under `conflicts/`, and knowledge-change history under `audit/`.
 
-It registers global skills at `${CODEX_HOME}/skills` or `~/.codex/skills` for Codex and `~/.claude/skills` for Claude Code. Claude's optional researcher and critic agents are registered under `~/.claude/agents`.
+It registers global skills at `${CODEX_HOME}/skills` or `~/.codex/skills` for Codex and `~/.claude/skills` for Claude Code. Claude's optional researcher and critic agents are registered under `~/.claude/agents`. Unix installations use managed symbolic links. Windows installations use managed copies so Developer Mode and administrator symlink privileges are not required.
 
 After installation, Boardroom is available from any repository. Ask naturally:
 
@@ -78,6 +114,26 @@ The agent should begin with focused discovery. It should not convene the full co
 ```bash
 python3 scripts/boardroom_home.py check
 ```
+
+If the installer reports an existing unmanaged path, inspect it first. `--force` backs that path up with a timestamp before installing Boardroom; it does not silently delete it.
+
+## Uninstall
+
+Remove Boardroom from both agents while preserving global knowledge, audit history, backups, and conflict files:
+
+```bash
+python3 scripts/uninstall_global.py --provider all
+```
+
+Use `--provider codex` or `--provider claude` to unregister only one agent. The uninstaller removes only symlinks or copies it can verify are Boardroom-managed.
+
+To permanently delete the entire global Boardroom home as well:
+
+```bash
+python3 scripts/uninstall_global.py --provider all --purge
+```
+
+The command prompts before deletion. For intentional non-interactive removal, add `--yes`. Purging deletes learned employees, playbooks, audit history, backups, and unresolved upgrade conflicts and cannot be undone unless you have a backup.
 
 ## Package for Codex
 
@@ -230,6 +286,49 @@ The installer compares the new bundled core, the previous bundled baseline, and 
 - When both the bundled file and learned file changed, the learned version remains active and the new bundled version is written under `conflicts/<timestamp>/` for review.
 - Runtime files under `app/` are replaced and provider links continue to point at them.
 
+### Resolve an upgrade conflict
+
+For a conflict, the active learned file remains under `<boardroom-home>/core/` and the incoming bundled version is written under `<boardroom-home>/conflicts/<timestamp>/` with the same relative path.
+
+1. Back up the global home.
+2. Compare the active learned file, the incoming conflict file, and the previous bundled baseline under `bundled-core/`.
+3. Merge the useful upstream changes into the active file without removing validated learned knowledge.
+4. Update artifact version, review date, sources, and index metadata when applicable.
+5. Run global validation:
+
+   ```bash
+   python3 /path/to/boardroom-home/app/scripts/validate_boardroom.py --core /path/to/boardroom-home/core
+   ```
+
+6. Remove the resolved conflict copy only after validation and review.
+
+Do not replace the whole live `core/` with `bundled-core/`; that would discard learned knowledge.
+
+### Back up and recover
+
+Boardroom's complete durable state is the global application home. Back up that directory before upgrades or major knowledge changes.
+
+To recover while preserving learned knowledge:
+
+1. Restore the backed-up `core/` and `audit/` directories into the chosen Boardroom home.
+2. Run the installer from the desired release. It restores runtime files and provider registrations while merging bundled knowledge against the restored core.
+3. Run `boardroom_home.py check` and global validation.
+4. Restart Codex or Claude Code sessions so skill discovery refreshes.
+
+If only runtime files are damaged, rerun the installer; do not purge. If a provider registration is damaged, uninstall that provider without `--purge`, then reinstall it.
+
+## Publish a release
+
+The release workflow runs when a tag matching `v*` is pushed. It requires the tag to equal `v` plus the contents of `VERSION`, builds `boardroom.tar.gz` and `boardroom.zip`, and creates a GitHub Release with generated notes.
+
+```bash
+# After updating VERSION and merging a release-ready commit:
+git tag v1.2.0
+git push origin v1.2.0
+```
+
+The remote installers always download the assets from the latest published release. Test release candidates before moving the latest release pointer.
+
 ## Updating social playbooks
 
 Social playbooks have a 30-day review interval. When an applicable playbook is older than that:
@@ -289,6 +388,8 @@ python3 /path/to/skill-creator/scripts/quick_validate.py skills/create-boardroom
 │   └── claude-code/
 ├── scripts/
 │   ├── install_global.py             # global installation and safe upgrades
+│   ├── uninstall_global.py           # safe unregister and optional purge
+│   ├── check_prereqs.py              # platform, Python, CLI and write checks
 │   ├── boardroom_home.py             # global home resolution and diagnostics
 │   ├── record_knowledge_change.py    # durable-learning audit log
 │   ├── package_boardroom.py
@@ -302,6 +403,10 @@ python3 /path/to/skill-creator/scripts/quick_validate.py skills/create-boardroom
 Boardroom provides structured decision support and does not claim professional licensure. Legal, tax, investment, insurance, medical, employment, and regulated compliance decisions require current jurisdiction-specific information and qualified professional review.
 
 The Team Lead must obtain explicit approval before external side effects such as spending, publishing, messaging, deployment, production changes, account creation, or accepting terms. Analysis permission is not execution permission.
+
+## License
+
+Boardroom is available under the [MIT License](LICENSE).
 
 ## Design principles
 
