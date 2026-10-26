@@ -9,6 +9,7 @@ Boardroom is designed for progressive discovery. The runtime sees a short skill 
 - A Team Lead workflow for discovery, staffing, orchestration, cost-quality routing, reconciliation, and delivery.
 - Twelve specialist profiles covering brand, perception, UX, design, financial planning, cloud, software architecture, software engineering, business, marketing, social media, and AI automation.
 - Initial Angular, NestJS, Rust, CSS, semantic HTML, Facebook/Instagram, LinkedIn, TikTok, and YouTube playbooks.
+- A selectively triggered foundational-reframing playbook for challenging the economic engine, constraint, control point, capital model, or business boundary behind the visible product.
 - Durable engagement memory separated into briefs, questions, assumptions, plans, decisions, reports, research, deliverables, and retrospectives.
 - Evidence, freshness, governance, approval, and quality protocols.
 - A controlled workflow for researching and promoting new employees or playbooks.
@@ -29,6 +30,8 @@ Boardroom chooses the smallest sufficient execution shape:
 | Program | Complex/high-impact work requiring bounded parallel workstreams or subcommittees |
 
 Employees are not fictional executives whose opinions are generated for entertainment. Each receives a bounded question, relevant context, an expected artifact, evidence requirements, and a stopping condition. The Team Lead resolves conflicts against the user's goals and records material dissent.
+
+For consequential business-model work, the Team Lead also screens for structural signals: healthy demand with weak firm economics, conflict between unit and system economics, a growth-limiting control right or capital burden, value captured elsewhere in the ecosystem, or a secondary asset that compounds through ordinary operations. When triggered, the Business Strategist must compare the strongest conventional path with at least two genuinely different structural hypotheses, test their economics and risks, and submit the recommendation to an independent critic. Routine work skips this process, and the conventional path is allowed to win.
 
 ## Requirements
 
