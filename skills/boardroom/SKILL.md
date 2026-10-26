@@ -24,6 +24,8 @@ Classify the work by consequence and coordination, not prompt length:
 - **Council:** multiple interacting domains; brief selected specialists, then synthesize.
 - **Program:** complex or high-impact; run bounded parallel workstreams, focused subcommittees where dependencies require collaboration, then a final reconciliation.
 
+For Consult, Council, or Program work involving business-model strategy, run a foundational challenge screen before finalizing the plan. Check whether demand and firm economics diverge, unit and system economics conflict, growth depends on a scarce control right or capital structure, another participant captures the profit pool, or repeated activity creates a compounding secondary asset. If a signal is material, select the Business Strategist and load `business-foundational-reframing` from the global playbook index. Do not run it for routine, narrow work without a structural signal.
+
 Read the applicable files from the resolved global `protocols` directory: `orchestration.md` for Council or Program work, `governance.md` for regulated, external-action, personal-data, or high-impact work, and `research.md` whenever current facts matter.
 
 ## Select and brief specialists
@@ -51,6 +53,8 @@ Use provider-neutral tiers and let the active adapter map them:
 - `critic`: independent challenge of a consequential recommendation.
 
 Escalate capability only when the expected quality gain justifies cost. Never invent model availability or pricing.
+
+When foundational reframing could materially change the recommendation, use `deep` for synthesis and `critic` for an independent challenge. The critic must test the constraint diagnosis, economics, transition, stakeholder response, and strongest conventional alternative—not merely review prose.
 
 ## Close the engagement
 

@@ -6,6 +6,16 @@ Use this for Council and Program engagements.
 
 Create a work plan containing the decision, required artifacts, selected employees, why each is needed, dependencies, execution shape, capability tier, evidence needs, stopping condition, and estimated relative cost (`low`, `medium`, `high`). Do not claim precise provider cost without current pricing and measurable token/tool assumptions.
 
+### Foundational challenge screen
+
+For business-model work beyond Direct scope, check for the activation signals in the `business-foundational-reframing` playbook before locking the frame. If activated:
+
+- include the Business Strategist, the playbook, and its required artifacts in the plan;
+- add only specialists needed to test the mechanism, commonly Financial Planner plus domain-specific legal or regulated expertise as an external dependency;
+- preserve the strongest conventional baseline and generate structurally distinct alternatives;
+- require an independent critic before a consequential recommendation;
+- stop expanding alternatives when additional frames no longer expose a different causal mechanism or change the decision.
+
 ## Delegate
 
 A specialist brief contains only relevant context and asks for a structured report:
