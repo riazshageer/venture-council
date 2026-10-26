@@ -1,31 +1,23 @@
 # Memory scopes
 
-Boardroom has two non-interchangeable memory scopes.
+Load this only when work must persist across turns or files will be written.
 
-## Global Boardroom knowledge
+## Global knowledge
 
-The global Boardroom home is resolved by the active skill's `scripts/resolve_boardroom.py`. Its `core/` contains council employees, playbooks, protocols, schemas, templates, and source provenance shared across every repository.
+The resolved global `core/` holds reusable employees, playbooks, protocols, schemas, templates, and sources. Change it only through candidate, validation, and promotion. Never copy client secrets or repository facts into it.
 
-Only reusable, non-confidential, validated professional capability belongs there. New employees, new playbooks, and improvements to existing ones must be written there through the candidate/validation/promotion workflow. Never write these artifacts into the current repository, even if it has a `core/`, `skills/`, or `.boardroom/` directory.
+## Repository state
 
-## Repository-local memory
+Use the repository's clear, authorized memory convention; otherwise use `.boardroom/engagements/<slug>/`. Create no engagement files for Direct work or disposable Consult work.
 
-The current repository owns facts and state about its engagement: brief, goals, constraints, assumptions, decisions, research, reports, deliverables, and retrospective.
+For persistent work, create only what will be read again:
 
-Before creating `.boardroom/engagements/<slug>/`, inspect repository instructions and existing memory conventions. Use an existing repository memory system when all are true:
+- `brief.md` first: goal, decisive facts, constraints, success, unknowns, current decision;
+- `decisions.md` when a durable decision exists;
+- assumptions, questions, plan, research, reports, deliverables, or retrospective only when they carry unique state.
 
-- its instructions or structure make the intended location and format clear;
-- the information is relevant to that repository rather than reusable Boardroom capability;
-- writing is within the user's requested scope;
-- the content contains no unnecessary secrets or personal data.
+Update the authoritative file with deltas; do not copy the same brief into every artifact. Link to existing project files instead of duplicating them. Never store secrets.
 
-If the repository memory system is ambiguous, keep Boardroom state under `.boardroom/engagements/<slug>/` rather than guessing. Do not duplicate the same state across both systems. Link to an authoritative project artifact when useful.
+## Learning
 
-## Learning from an engagement
-
-An engagement can produce both kinds of learning. Split them:
-
-- “This product targets accountants in Trinidad” is repository-local.
-- “A validated method for evaluating payment rails by country” may become a global playbook after removing client details, sourcing, testing, and promotion.
-
-Promotion copies only the generalized capability, never the client data that revealed the opportunity.
+Keep project facts local. Promote only generalized, sourced, validated, non-confidential capability to global knowledge.
