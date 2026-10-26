@@ -118,6 +118,39 @@ class BoardroomTests(unittest.TestCase):
             audit = boardroom_home / "audit/knowledge-changes.jsonl"
             self.assertIn("team-lead", audit.read_text(encoding="utf-8"))
 
+            subprocess.run(
+                [
+                    sys.executable,
+                    str(ROOT / "scripts/uninstall_global.py"),
+                    "--provider",
+                    "codex",
+                ],
+                cwd=client_repo,
+                env=env,
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            self.assertFalse(installed_skill.exists())
+            self.assertTrue((boardroom_home / "core/council/index.md").is_file())
+
+            subprocess.run(
+                [
+                    sys.executable,
+                    str(ROOT / "scripts/uninstall_global.py"),
+                    "--provider",
+                    "codex",
+                    "--purge",
+                    "--yes",
+                ],
+                cwd=client_repo,
+                env=env,
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            self.assertFalse(boardroom_home.exists())
+
 
 if __name__ == "__main__":
     unittest.main()
