@@ -2,7 +2,7 @@
 set -eu
 
 PROVIDER="${1:-all}"
-REPOSITORY="${BOARDROOM_GITHUB_REPOSITORY:-rshageer/boardroom}"
+REPOSITORY="${BOARDROOM_GITHUB_REPOSITORY:-riazshageer/venture-council}"
 
 case "$PROVIDER" in
   all|codex|claude) ;;

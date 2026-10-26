@@ -53,20 +53,20 @@ On Windows PowerShell, use `python` or `py -3` in place of `python3` when approp
 No repository clone is required. On Linux or macOS:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/rshageer/boardroom/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/riazshageer/venture-council/main/install.sh | sh
 ```
 
 Install for only one provider by downloading the script before running it:
 
 ```bash
-curl -fsSLO https://raw.githubusercontent.com/rshageer/boardroom/main/install.sh
+curl -fsSLO https://raw.githubusercontent.com/riazshageer/venture-council/main/install.sh
 sh install.sh codex   # or: sh install.sh claude
 ```
 
 On Windows PowerShell:
 
 ```powershell
-irm https://raw.githubusercontent.com/rshageer/boardroom/main/install.ps1 -OutFile install.ps1
+irm https://raw.githubusercontent.com/riazshageer/venture-council/main/install.ps1 -OutFile install.ps1
 .\install.ps1 -Provider all
 ```
 

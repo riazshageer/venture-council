@@ -1,7 +1,7 @@
 param(
     [ValidateSet("all", "codex", "claude")]
     [string]$Provider = "all",
-    [string]$Repository = $(if ($env:BOARDROOM_GITHUB_REPOSITORY) { $env:BOARDROOM_GITHUB_REPOSITORY } else { "rshageer/boardroom" })
+    [string]$Repository = $(if ($env:BOARDROOM_GITHUB_REPOSITORY) { $env:BOARDROOM_GITHUB_REPOSITORY } else { "riazshageer/venture-council" })
 )
 
 $ErrorActionPreference = "Stop"
