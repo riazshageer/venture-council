@@ -41,8 +41,9 @@ def check(provider: str) -> tuple[dict[str, object], bool]:
     }
     requested = ("codex", "claude") if provider == "all" else (provider,)
     missing = [name for name in requested if not commands[name]]
+    provider_ok = any(commands[name] for name in requested) if provider == "all" else not missing
     result: dict[str, object] = {
-        "ok": python_ok and home_ok and not missing,
+        "ok": python_ok and home_ok and provider_ok,
         "platform": platform.platform(),
         "python": {
             "ok": python_ok,
@@ -77,7 +78,10 @@ def main() -> None:
             if name in (("codex", "claude") if args.provider == "all" else (args.provider,)):
                 print(f"- {name}: {command or 'not found on PATH'}")
         if result["missing_commands"]:
-            print("Install the missing agent CLI or select only the provider already installed.")
+            if args.provider == "all" and ok:
+                print("Missing agents will still be registered and become available after their CLI is installed.")
+            else:
+                print("Install the missing agent CLI or select only the provider already installed.")
     raise SystemExit(0 if ok else 1)
 
 
