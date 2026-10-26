@@ -8,6 +8,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
+import yaml
+
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -48,6 +50,35 @@ class BoardroomTests(unittest.TestCase):
                     self.assertTrue((target / "skills/boardroom/SKILL.md").exists())
                     if provider == "claude":
                         self.assertTrue((target / "agents/boardroom-critic.md").exists())
+
+    def test_foundational_reframing_capability_is_active_and_complete(self) -> None:
+        playbook = ROOT / "core/playbooks/business/foundational-reframing.md"
+        content = playbook.read_text(encoding="utf-8")
+        _, frontmatter, body = content.split("---", 2)
+        metadata = yaml.safe_load(frontmatter)
+
+        self.assertEqual(metadata["owner"], "business-strategist")
+        self.assertEqual(metadata["status"], "active")
+        for heading in (
+            "## Activation signals",
+            "## Method",
+            "## Required output",
+            "## Calibration example",
+            "## Boundaries",
+        ):
+            self.assertIn(heading, body)
+        self.assertIn("conventional baseline", body.lower())
+        self.assertIn("at least two", body.lower())
+        self.assertIn("independent `critic`", body)
+        self.assertTrue((ROOT / "core/templates/foundational-reframe.md").is_file())
+        self.assertTrue((ROOT / "examples/foundational-reframing.md").is_file())
+
+        playbook_index = (ROOT / "core/playbooks/index.md").read_text(encoding="utf-8")
+        team_lead = (ROOT / "skills/boardroom/SKILL.md").read_text(encoding="utf-8")
+        quality_gates = (ROOT / "core/protocols/quality-gates.md").read_text(encoding="utf-8")
+        self.assertIn("business-foundational-reframing", playbook_index)
+        self.assertIn("foundational challenge screen", team_lead.lower())
+        self.assertIn("the do-not-reframe case can win", quality_gates.lower())
 
     def test_global_install_separates_runtime_knowledge_and_repository(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
