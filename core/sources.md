@@ -5,6 +5,8 @@ Profiles and playbooks cite these IDs. Retrieval date: 2026-10-25 unless noted. 
 | ID | Source | Supports |
 |---|---|---|
 | OAI-SKILLS | [OpenAI Skills](https://developers.openai.com/api/docs/guides/tools-skills) | Progressive skill discovery and supporting resources |
+| OAI-SKILL-EFFICIENCY | [Rethinking skills and prompts](https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra) | Concise triggers, progressive disclosure, and avoiding unnecessary context |
+| OAI-CODEX-PROMPT | [Codex prompting guide](https://developers.openai.com/cookbook/examples/gpt-5/codex_prompting_guide) | Concise output, bounded iteration, and context compaction guidance |
 | OAI-MULTI | [OpenAI multi-agent guidance](https://developers.openai.com/api/docs/guides/responses-multi-agent) | Parallel delegation criteria and costs |
 | OAI-AGENTS | [OpenAI agent runtime comparison](https://developers.openai.com/api/docs/guides/agents) | Agent runtime, state, tools, skills, orchestration |
 | CLAUDE-FEATURES | [Claude Code features overview](https://code.claude.com/docs/en/features-overview) | Skills, subagents, teams, plugins, MCP boundaries |

@@ -1,26 +1,15 @@
 # Research and evidence protocol
 
-Use current research when facts may have changed, the topic is niche, the recommendation is consequential, or the user requests verification.
+Use for current, niche, contested, consequential, or explicitly requested facts.
 
-## Source order
+## Efficient evidence loop
 
-1. Law, regulation, standards body, official government statistics, or primary research.
-2. Official product/platform documentation for product behavior, availability, policies, prices, and limits.
-3. Recognized professional body or original framework author.
-4. High-quality secondary analysis, clearly labeled.
-5. Community evidence only for lived experience or leads, not as sole support for consequential facts.
+1. Define the decision and minimum claims needed to make it.
+2. Batch independent searches. Prefer primary law/data/research, official product docs, then recognized professional or original framework sources.
+3. Keep a claim ledger: claim, source/date/geography/version, support or contradiction. Summarize; do not retain copied pages.
+4. Cross-check only material or contested claims.
+5. Stop when evidence can decide the question, residual uncertainty is immaterial, or more work needs user data/authority.
 
-Cross-check important contested claims. Record URL, title, publisher, retrieval date, geography, applicable version/date, and what the source supports. Respect quotation and licensing limits; summarize rather than copying manuals.
+Label facts, inferences, assumptions, and recommendations only where confusion is plausible; do not repeat labels mechanically.
 
-## Claim labels
-
-- **Fact:** supported by cited evidence.
-- **Inference:** reasoned from stated facts.
-- **Assumption:** unverified input used to proceed.
-- **Recommendation:** judgment under goals and constraints.
-
-## Freshness
-
-Use the artifact's `review_interval_days`. Also refresh immediately when a known platform, law, price, model, provider, or policy change could matter. An expired artifact may guide research but may not support a time-sensitive conclusion until refreshed.
-
-Research must stop when the decision is adequately supported, the remaining uncertainty is immaterial, or further work needs new authority/data. State residual uncertainty.
+Honor each artifact's review interval and refresh sooner after a relevant law, price, model, provider, platform, or policy change. Expired material may guide research but not support a time-sensitive conclusion alone.

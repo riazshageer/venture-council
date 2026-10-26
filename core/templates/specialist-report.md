@@ -1,15 +1,6 @@
 # Specialist report
 
-## Recommendation or finding
-
-## Evidence and dates
-
-## Assumptions and confidence
-
-## Alternatives and tradeoffs
-
-## Risks and dependencies
-
-## Decisions needed
-
-## Next action
+- Finding and confidence:
+- Decisive evidence/assumptions:
+- Material alternative, risk, or dependency:
+- Decision or next action:

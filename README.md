@@ -33,6 +33,25 @@ Employees are not fictional executives whose opinions are generated for entertai
 
 For consequential business-model work, the Team Lead also screens for structural signals: healthy demand with weak firm economics, conflict between unit and system economics, a growth-limiting control right or capital burden, value captured elsewhere in the ecosystem, or a secondary asset that compounds through ordinary operations. When triggered, the Business Strategist must compare the strongest conventional path with at least two genuinely different structural hypotheses, test their economics and risks, and submit the recommendation to an independent critic. Routine work skips this process, and the conventional path is allowed to win.
 
+## Token-efficient execution
+
+Boardroom treats context as a budgeted resource while preserving decision quality:
+
+- Direct requests load no council index, playbook index, protocol, specialist, or engagement memory.
+- Consult work loads the council index, then only the selected profile; the playbook index is deferred until specialized guidance is plausible.
+- Council and Program work reuse one compact brief and send each specialist only a task-specific delta.
+- Memory files are created only when their state will be read again. Research stores claim/source notes rather than copied pages.
+- Reports and synthesis contain decision-relevant deltas instead of repeated briefs or meeting transcripts.
+- Consequential work keeps evidence, dissent, governance, and critic checks even when output is compressed.
+
+Repository tests enforce word-count ceilings on discovery instructions, indexes, profiles, playbooks, protocols, and templates. Audit them locally with:
+
+```bash
+python3 scripts/audit_context_budget.py --json
+```
+
+These are context-size proxies rather than provider billing estimates; actual tokenization and cached-input behavior vary by model and runtime.
+
 ## Requirements
 
 - Python 3.10 or later.
@@ -326,8 +345,8 @@ The release workflow runs when a tag matching `v*` is pushed. It requires the ta
 
 ```bash
 # After updating VERSION and merging a release-ready commit:
-git tag v1.3.0
-git push origin v1.3.0
+git tag v1.4.0
+git push origin v1.4.0
 ```
 
 The remote installers always download the assets from the latest published release. Test release candidates before moving the latest release pointer.

@@ -2,7 +2,7 @@
 id: business-foundational-reframing
 owner: business-strategist
 status: active
-version: 1.0.0
+version: 1.1.0
 reviewed: 2026-10-25
 review_interval_days: 180
 source_ids: [TEECE-BMI, AMIT-ZOTT, STRATEGYZER-BMC, TOCICO-5FS]
@@ -12,95 +12,75 @@ source_ids: [TEECE-BMI, AMIT-ZOTT, STRATEGYZER-BMC, TOCICO-5FS]
 
 ## Purpose
 
-Challenge what business the organization is actually in when improving the visible product would leave the underlying economics, control, or growth constraint unsolved. The aim is a testable structural alternative, not novelty for its own sake.
+Challenge the apparent business when product improvements leave economics, control, or growth constraints unsolved. Seek a testable mechanism, not novelty.
 
 ## Activation signals
 
-Load this playbook when at least one signal is material, especially when several interact:
+Load when a material signal exists:
 
-- customer demand or unit operations appear healthy while the firm remains cash-poor;
-- unit economics and system-level economics point in different directions;
-- growth is constrained by capital, location, infrastructure, contracts, distribution, or control rather than demand alone;
-- a supplier, intermediary, financier, landlord, platform, or complement captures disproportionate value;
-- repeated operations create a secondary asset such as data, distribution, property access, trust, financing capacity, or workflow control;
-- the visible product is replaceable but a surrounding relationship, right, network, or asset compounds;
-- conventional price, promotion, product, or cost changes cannot resolve multiple linked constraints.
+- healthy demand or units but weak firm cash/economics;
+- conflicting unit and system economics;
+- growth constrained by capital, location, infrastructure, contracts, distribution, or control;
+- another ecosystem participant captures disproportionate value;
+- repeated operations create a compounding asset such as data, access, trust, financing capacity, or workflow control;
+- the visible product is replaceable but a relationship, right, network, or asset is not;
+- ordinary pricing, product, promotion, or cost changes cannot resolve linked constraints.
 
-Do not activate merely because a request mentions strategy. For a narrow, reversible decision with no structural signal, use the ordinary business-strategy method.
+Skip narrow, reversible strategy questions without a structural signal.
 
 ## Method
 
-### 1. Establish the conventional baseline
+### 1. Preserve the conventional baseline
 
-State the current model, its strongest ordinary improvement, and why that may or may not be sufficient. Never hide a practical answer in pursuit of a clever one.
+State the current model, strongest ordinary improvement, and why it may be sufficient. A practical answer must not disappear in pursuit of a clever one.
 
-### 2. Map the business beneath the product
+### 2. Map the structure
 
-For the current system identify:
+Capture only decision-relevant layers:
 
-1. customer promise and visible product;
-2. payer, revenue mechanism, margin, cash timing, and profit pool;
-3. scarce asset or right and who owns or controls it;
-4. binding constraint and the rules that reinforce it;
-5. capital burden and allocation of demand, execution, liability, and downside risk;
-6. resource that compounds with each transaction;
-7. financing engine for growth;
-8. replaceable participants and the party with durable bargaining power;
-9. stakeholder incentives and likely reactions.
+- customer promise and visible product;
+- payer, revenue, margin, cash timing, and profit pool;
+- scarce asset/right, owner, and controller;
+- binding constraint and reinforcing rules;
+- capital burden and risk allocation;
+- resource that compounds per transaction;
+- growth financing engine;
+- bargaining power and stakeholder incentives.
 
-Separate firm-level, unit-level, and ecosystem-level economics. Treat every map as a dated hypothesis, not as settled fact.
+Separate unit, firm, and ecosystem economics. Treat the map as a dated hypothesis.
 
-### 3. Generate structural alternatives
+### 3. Generate alternatives
 
-Keep the baseline and generate at least two materially different reframing hypotheses when the playbook is activated. Draw from different mechanisms rather than renaming one idea:
+Keep the baseline and create at least two alternatives using different mechanisms: change payer/beneficiary; govern a bottleneck; own, lease, license, finance, insure, aggregate, or standardize a resource; unbundle/rebundle activities; shift product toward a justified platform, infrastructure, logistics, licensing, financing, data, or service model; change cash timing, control, capital, or risk allocation. Ask what remains valuable if the obvious product earns no profit.
 
-- change the payer or beneficiary;
-- turn a recurring cost or bottleneck into an owned or governed asset;
-- own, lease, license, finance, insure, aggregate, or set standards around a critical resource;
-- unbundle one activity or rebundle complements into a system;
-- move from product to platform, marketplace, infrastructure, logistics, licensing, financing, data, or service where causally justified;
-- shift cash timing, capital intensity, control rights, or risk to the party best able to bear it;
-- ask what would remain valuable if the obvious product earned no profit.
+Include “do not reframe.” A new structure must beat the conventional path after transition costs and risk.
 
-Include a "do not reframe" hypothesis. A structural change must beat a credible conventional path after transition costs and new risks.
+### 4. Test each hypothesis
 
-### 4. Test causal quality
+Record:
 
-For each hypothesis record:
+- constraint relieved and causal path to the goal;
+- participant value creation, delivery, and capture;
+- required rights, capabilities, capital, and time;
+- economics, cash conversion, incentives, downside, and competitive response;
+- legal, ethical, regulatory, concentration, and mission risks;
+- supporting and contrary evidence;
+- cheapest discriminating test, threshold, stop condition, and reversible first move.
 
-- the precise constraint it relieves and causal chain to the user's goal;
-- value created, delivered, and captured by each key participant;
-- required control rights, capabilities, capital, and time;
-- changes to unit economics, cash conversion, downside exposure, and incentives;
-- defensibility and probable competitive response;
-- legal, regulatory, ethical, concentration, and mission risks;
-- evidence for and against, confidence, and the cheapest discriminating test;
-- leading indicator, threshold, stop condition, and reversible first move.
-
-Reject an idea that is only surprising, depends on an unsupported analogy, or merely moves losses or risk to a weaker stakeholder.
+Reject surprise without causality, unsupported analogy, or risk merely shifted to a weaker party.
 
 ### 5. Challenge independently
 
-For a consequential recommendation, assign an independent `critic` to attack the constraint diagnosis, hidden capital needs, stakeholder response, transition path, and evidence. Preserve material dissent and state what evidence would reopen the decision.
+For a consequential recommendation, assign an independent `critic` to attack the constraint diagnosis, capital needs, stakeholder response, transition, evidence, and strongest conventional alternative. Preserve material dissent and a reopening trigger.
 
 ## Required output
 
-- conventional baseline;
-- structural map;
-- baseline plus at least two distinct reframing hypotheses;
-- comparison against user goals and constraints;
-- evidence and financial/operational implications;
-- cheap tests with thresholds and stop conditions;
-- recommendation, dissent, and trigger to revisit.
+Provide the conventional baseline, compact structural map, baseline plus at least two distinct hypotheses, decisive evidence and implications, tests with thresholds, recommendation, dissent, and revisit trigger. Avoid repeating the map in prose.
 
 ## Calibration example
 
-A restaurant franchisor with popular units but weak corporate cash flow should not jump to "become a property company." The structural inquiry asks whether control of locations and lease terms could simultaneously finance expansion, improve site quality, align franchisee incentives, and create enforceable standards. That hypothesis is valuable only if property access is truly constraining growth, the capital and downside are survivable, and it outperforms licensing or other control mechanisms. The reusable lesson is multi-constraint leverage, not real estate.
+For a popular restaurant franchise with weak corporate cash, do not jump to “property company.” Test whether location control could jointly improve financing, site quality, incentives, and standards—and whether capital/downside survive comparison with licensing or contractual control. The lesson is multi-constraint leverage, not real estate.
 
 ## Boundaries
 
-- Do not force a category-changing answer when ordinary execution is the bottleneck.
-- Do not present an identity slogan as a business model; show mechanisms, numbers, rights, and tests.
-- Do not recommend regulated financial, legal, property, tax, employment, or investment structures without jurisdiction-specific qualified review.
-- Do not confuse ownership with control; contracts, standards, incentives, and partnerships may be safer.
-- Keep exploration proportional to consequence, reversibility, evidence, and user appetite.
+Do not force reframing when execution is the constraint or present an identity slogan without mechanisms, rights, numbers, and tests. Ownership is only one control mechanism. Require qualified jurisdiction-specific review for regulated legal, financial, property, tax, employment, or investment structures.

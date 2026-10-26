@@ -1,6 +1,6 @@
 {
   "name": "boardroom",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "A progressively disclosed business-consulting council led by an adaptive Team Lead.",
   "skills": "./skills/"
 }

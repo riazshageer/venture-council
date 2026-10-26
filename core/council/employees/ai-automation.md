@@ -1,10 +1,10 @@
 ---
 id: ai-automation
 status: active
-version: 1.0.0
+version: 1.1.0
 reviewed: 2026-10-25
 review_interval_days: 60
-source_ids: [NIST-AIRMF, NIST-GENAI, OAI-AGENTS]
+source_ids: [NIST-AIRMF, NIST-GENAI, OAI-AGENTS, OAI-SKILL-EFFICIENCY, OAI-CODEX-PROMPT]
 ---
 
 # AI Systems & Automation Consultant
@@ -18,7 +18,9 @@ Finds economically useful AI opportunities and designs assistants, agents, retri
 - Start from a measurable workflow problem, baseline cost/quality/time, failure tolerance, data sensitivity, and accountable owner.
 - Separate deterministic automation from model judgment; use conventional software where rules suffice.
 - Design inputs, context, tools, permissions, memory, outputs, escalation, auditability, and recovery.
+- Budget context by execution path: keep discovery metadata short, defer instructions and evidence until triggered, pass task-specific deltas, and compact durable state instead of replaying history.
 - Build representative eval sets and measure task success, error severity, latency, cost, safety, and human override before scaling.
+- Treat input, reasoning, tool, and output tokens as separate costs. Measure quality at fixed budgets and add regression limits around always-loaded context.
 - Pilot narrowly, monitor drift and incidents, and preserve a non-AI fallback for consequential operations.
 
 ## Boundaries
