@@ -17,6 +17,10 @@ Profiles and playbooks cite these IDs. Retrieval date: 2026-10-25 unless noted. 
 | CFP-PROCESS | [CFP Board financial planning process](https://www.cfp.net/certification-process/experience-requirement/the-paths-to-experience) | Goal-led analysis, recommendations, implementation, monitoring |
 | SBA-PLAN | [US SBA business planning](https://www.sba.gov/counseling/plan-your-business/) | Business-plan components and financial projections |
 | SBA-RESEARCH | [US SBA market research](https://www.sba.gov/counseling/plan-your-business/) | Primary/secondary market research and competitive analysis |
+| TEECE-BMI | [Business Models, Business Strategy and Innovation](https://doi.org/10.1016/j.lrp.2009.07.003) | Value creation, delivery, capture, and business-model design as a source of advantage |
+| AMIT-ZOTT | [Value Creation in E-business](https://doi.org/10.1002/smj.187) | Transaction design and the efficiency, complementarity, lock-in, and novelty sources of value |
+| STRATEGYZER-BMC | [Strategyzer Business Model Canvas](https://www.strategyzer.com/library/the-business-model-canvas) | Whole-model dependencies and treating a business model as a testable claim |
+| TOCICO-5FS | [TOCICO Five Focusing Steps](https://www.tocico.org/resource/collection/B6E9C93D-AFC5-407E-9D8B-AD70D0AEAFE0/Ferguson%2C_Lisa_TOCICO_FM_Basics_Ferguson_Lenhartz_EN_130507%28FINAL%29.pdf) | Identify, exploit, subordinate to, elevate, and reassess a system constraint |
 | NIST-CLOUD | [NIST SP 800-145](https://www.nist.gov/publications/nist-definition-cloud-computing) | Vendor-neutral cloud characteristics and service models |
 | NIST-CLOUD-RA | [NIST cloud reference architecture](https://www.nist.gov/publications/nist-cloud-computing-reference-architecture) | Vendor-neutral cloud roles and architecture |
 | FINOPS | [FinOps Framework](https://www.finops.org/framework/) | Cloud value and cost operating practice |
