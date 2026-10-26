@@ -5,12 +5,18 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 from pathlib import Path
 
 
 explicit = os.environ.get("BOARDROOM_HOME")
 xdg_data = os.environ.get("XDG_DATA_HOME")
-home = Path(explicit).expanduser() if explicit else (Path(xdg_data).expanduser() if xdg_data else Path.home() / ".local" / "share") / "boardroom"
+if explicit:
+    home = Path(explicit).expanduser()
+elif sys.platform == "win32":
+    home = Path(os.environ.get("LOCALAPPDATA", Path.home() / "AppData" / "Local")) / "Boardroom"
+else:
+    home = (Path(xdg_data).expanduser() if xdg_data else Path.home() / ".local" / "share") / "boardroom"
 core = home.resolve() / "core"
 if not (core / "council" / "index.md").is_file():
     raise SystemExit(f"Boardroom global knowledge is not initialized at {home}. Run the global installer from the Boardroom distribution.")

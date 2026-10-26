@@ -60,7 +60,13 @@ class BoardroomTests(unittest.TestCase):
             env["BOARDROOM_HOME"] = str(boardroom_home)
             env["CODEX_HOME"] = str(codex_home)
             subprocess.run(
-                [sys.executable, str(ROOT / "scripts/install_global.py"), "--provider", "codex"],
+                [
+                    sys.executable,
+                    str(ROOT / "scripts/install_global.py"),
+                    "--provider",
+                    "codex",
+                    "--skip-prereq-check",
+                ],
                 cwd=client_repo,
                 env=env,
                 check=True,
@@ -69,14 +75,23 @@ class BoardroomTests(unittest.TestCase):
             )
             self.assertTrue((boardroom_home / "core/council/index.md").is_file())
             self.assertTrue((boardroom_home / "app/skills/boardroom/SKILL.md").is_file())
-            self.assertTrue((codex_home / "skills/boardroom").is_symlink())
+            installed_skill = codex_home / "skills/boardroom"
+            self.assertTrue(installed_skill.is_dir())
+            if os.name != "nt":
+                self.assertTrue(installed_skill.is_symlink())
             self.assertFalse((client_repo / "core").exists())
 
             employee = boardroom_home / "core/council/employees/team-lead.md"
             learned_marker = "\n<!-- globally learned marker -->\n"
             employee.write_text(employee.read_text(encoding="utf-8") + learned_marker, encoding="utf-8")
             subprocess.run(
-                [sys.executable, str(ROOT / "scripts/install_global.py"), "--provider", "codex"],
+                [
+                    sys.executable,
+                    str(ROOT / "scripts/install_global.py"),
+                    "--provider",
+                    "codex",
+                    "--skip-prereq-check",
+                ],
                 cwd=client_repo,
                 env=env,
                 check=True,

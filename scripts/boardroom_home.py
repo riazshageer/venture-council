@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import sys
 from pathlib import Path
 
 
@@ -13,6 +14,10 @@ def boardroom_home() -> Path:
     explicit = os.environ.get("BOARDROOM_HOME")
     if explicit:
         return Path(explicit).expanduser().resolve()
+    if sys.platform == "win32":
+        local_app_data = os.environ.get("LOCALAPPDATA")
+        base = Path(local_app_data) if local_app_data else Path.home() / "AppData" / "Local"
+        return (base / "Boardroom").resolve()
     xdg_data = os.environ.get("XDG_DATA_HOME")
     base = Path(xdg_data).expanduser() if xdg_data else Path.home() / ".local" / "share"
     return (base / "boardroom").resolve()

@@ -14,6 +14,7 @@ import sys
 from pathlib import Path
 
 from boardroom_home import boardroom_home
+from check_prereqs import check as check_prerequisites
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -81,18 +82,71 @@ def merge_core(home: Path) -> list[str]:
     return changes
 
 
-def replace_link(link: Path, target: Path, force: bool) -> None:
-    if link.is_symlink():
-        if link.resolve() == target.resolve():
-            return
-        link.unlink()
-    elif link.exists():
-        if not force:
-            raise SystemExit(f"Refusing to replace existing path: {link}. Re-run with --force.")
-        backup = link.with_name(f"{link.name}.backup-{dt.datetime.now().strftime('%Y%m%dT%H%M%S')}")
-        link.rename(backup)
-    link.parent.mkdir(parents=True, exist_ok=True)
-    link.symlink_to(target)
+MANAGED_MARKER = ".boardroom-managed.json"
+
+
+def managed_directory(path: Path) -> bool:
+    return path.is_dir() and (path / MANAGED_MARKER).is_file()
+
+
+def managed_file(path: Path) -> bool:
+    return path.is_file() and path.with_name(path.name + ".boardroom-managed").is_file()
+
+
+def back_up(path: Path) -> Path:
+    backup = path.with_name(f"{path.name}.backup-{dt.datetime.now().strftime('%Y%m%dT%H%M%S')}")
+    path.rename(backup)
+    return backup
+
+
+def install_directory(destination: Path, target: Path, force: bool) -> None:
+    if os.name != "nt":
+        if destination.is_symlink():
+            if destination.resolve() == target.resolve():
+                return
+            destination.unlink()
+        elif destination.exists():
+            if not force:
+                raise SystemExit(f"Refusing to replace existing path: {destination}. Re-run with --force.")
+            back_up(destination)
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.symlink_to(target, target_is_directory=True)
+        return
+
+    if destination.exists():
+        if not managed_directory(destination):
+            if not force:
+                raise SystemExit(f"Refusing to replace existing path: {destination}. Re-run with --force.")
+            back_up(destination)
+        else:
+            shutil.rmtree(destination)
+    shutil.copytree(target, destination)
+    (destination / MANAGED_MARKER).write_text(
+        json.dumps({"managed_by": "boardroom", "source": str(target)}) + "\n",
+        encoding="utf-8",
+    )
+
+
+def install_file(destination: Path, target: Path, force: bool) -> None:
+    marker = destination.with_name(destination.name + ".boardroom-managed")
+    if destination.exists() or destination.is_symlink():
+        owned = destination.is_symlink() or managed_file(destination)
+        if not owned and not force:
+            raise SystemExit(f"Refusing to replace existing path: {destination}. Re-run with --force.")
+        if destination.is_dir() and not destination.is_symlink():
+            back_up(destination)
+        else:
+            if not owned:
+                back_up(destination)
+            else:
+                destination.unlink()
+        marker.unlink(missing_ok=True)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    if os.name == "nt":
+        shutil.copy2(target, destination)
+        marker.write_text("managed by Boardroom\n", encoding="utf-8")
+    else:
+        destination.symlink_to(target)
 
 
 def install_provider(home: Path, provider: str, force: bool) -> list[str]:
@@ -101,17 +155,17 @@ def install_provider(home: Path, provider: str, force: bool) -> list[str]:
         codex_base = Path(os.environ.get("CODEX_HOME", Path.home() / ".codex")) / "skills"
         for name in ("boardroom", "create-boardroom-employee"):
             link = codex_base / name
-            replace_link(link, home / "app" / "skills" / name, force)
+            install_directory(link, home / "app" / "skills" / name, force)
             installed.append(str(link))
     if provider in {"claude", "all"}:
         claude_base = Path.home() / ".claude"
         for name in ("boardroom", "create-boardroom-employee"):
             link = claude_base / "skills" / name
-            replace_link(link, home / "app" / "skills" / name, force)
+            install_directory(link, home / "app" / "skills" / name, force)
             installed.append(str(link))
         for agent in (home / "app" / "adapters" / "claude-code" / "agents").glob("*.md"):
             link = claude_base / "agents" / agent.name
-            replace_link(link, agent, force)
+            install_file(link, agent, force)
             installed.append(str(link))
     return installed
 
@@ -120,7 +174,14 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--provider", choices=("codex", "claude", "all"), default="all")
     parser.add_argument("--force", action="store_true", help="Back up and replace conflicting provider paths")
+    parser.add_argument("--skip-prereq-check", action="store_true")
     args = parser.parse_args()
+
+    if not args.skip_prereq_check:
+        result, ok = check_prerequisites(args.provider)
+        if not ok:
+            print(json.dumps(result, indent=2))
+            raise SystemExit("Prerequisite check failed. Fix the reported items or use --skip-prereq-check.")
 
     home = boardroom_home()
     home.mkdir(parents=True, exist_ok=True)
