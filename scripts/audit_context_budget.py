@@ -21,7 +21,13 @@ def words(path: Path) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--json", action="store_true")
+    parser.add_argument("--core", type=Path, help="Installed writable core; auto-detected when omitted")
     args = parser.parse_args()
+    core = args.core.resolve() if args.core else (ROOT / "core" if (ROOT / "core").is_dir() else ROOT.parent / "core")
+
+    def artifact(relative: str) -> Path:
+        prefix = "core/"
+        return core / relative[len(prefix):] if relative.startswith(prefix) else ROOT / relative
 
     limits = {
         "skills/boardroom/SKILL.md": 475,
@@ -35,7 +41,7 @@ def main() -> int:
         "core/templates/specialist-report.md": 35,
         "core/playbooks/business/foundational-reframing.md": 575,
     }
-    counts = {name: words(ROOT / name) for name in limits}
+    counts = {name: words(artifact(name)) for name in limits}
     bootstrap = counts["skills/boardroom/SKILL.md"] + counts["core/council/index.md"]
     errors = [f"{name}: {counts[name]} words exceeds {limit}" for name, limit in limits.items() if counts[name] > limit]
     if bootstrap > 725:
@@ -43,17 +49,17 @@ def main() -> int:
 
     group_limits = {
         "skill": (ROOT / "skills", "*/SKILL.md", 475),
-        "employee": (ROOT / "core/council/employees", "*.md", 250),
-        "playbook": (ROOT / "core/playbooks", "*/*.md", 600),
-        "protocol": (ROOT / "core/protocols", "*.md", 250),
-        "template": (ROOT / "core/templates", "**/*.md", 250),
+        "employee": (core / "council/employees", "*.md", 250),
+        "playbook": (core / "playbooks", "*/*.md", 600),
+        "protocol": (core / "protocols", "*.md", 250),
+        "template": (core / "templates", "**/*.md", 250),
     }
     group_counts: dict[str, dict[str, int]] = {}
     for group, (directory, pattern, maximum) in group_limits.items():
         group_counts[group] = {}
         for path in sorted(directory.glob(pattern)):
             count = words(path)
-            relative = str(path.relative_to(ROOT))
+            relative = str(path.relative_to(core.parent if core.name == "core" else core))
             group_counts[group][relative] = count
             if count > maximum:
                 errors.append(f"{relative}: {count} words exceeds {group} maximum {maximum}")
