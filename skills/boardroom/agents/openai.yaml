@@ -1,0 +1,4 @@
+interface:
+  display_name: "Boardroom"
+  short_description: "Turn an unclear idea into a decision-ready business plan"
+  default_prompt: "Use Boardroom to refine my idea, assemble only the specialists needed, and produce an actionable recommendation."

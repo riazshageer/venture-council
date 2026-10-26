@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+"""Print paths to Boardroom's initialized global knowledge store."""
+
+from __future__ import annotations
+
+import json
+import os
+from pathlib import Path
+
+
+explicit = os.environ.get("BOARDROOM_HOME")
+xdg_data = os.environ.get("XDG_DATA_HOME")
+home = Path(explicit).expanduser() if explicit else (Path(xdg_data).expanduser() if xdg_data else Path.home() / ".local" / "share") / "boardroom"
+core = home.resolve() / "core"
+if not (core / "council" / "index.md").is_file():
+    raise SystemExit(f"Boardroom global knowledge is not initialized at {home}. Run the global installer from the Boardroom distribution.")
+print(json.dumps({
+    "home": str(home.resolve()),
+    "core": str(core),
+    "council_index": str(core / "council" / "index.md"),
+    "playbook_index": str(core / "playbooks" / "index.md"),
+    "protocols": str(core / "protocols"),
+    "templates": str(core / "templates"),
+}, indent=2))

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Grow Boardroom"
+  short_description: "Add a researched specialist or playbook"
+  default_prompt: "Assess this Boardroom capability gap and create the smallest validated specialist or playbook needed."
