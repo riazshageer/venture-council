@@ -16,4 +16,4 @@ python3 scripts/package_boardroom.py codex dist/boardroom-codex
 
 The generated directory is also a complete global installer source. After extracting it, run its `scripts/install_global.py --provider codex` command. Installing only the plugin manifest does not initialize the writable global knowledge store.
 
-Boardroom uses the active Codex runtime's available subagent and research tools. Capability tiers are intentions, not hardcoded model IDs. If programmatic model routing and durable hosted sessions are required, wrap the same core in OpenAI's Agents API rather than duplicating council prompts.
+Boardroom uses the active Codex runtime's collaboration tools to create bounded generic specialist workers; the Team Lead retains the user conversation and final decision. Without collaboration tools it follows the same council states with isolated sequential position cards. Capability tiers are intentions, not hardcoded model IDs. For programmatic routing and durable hosted sessions, wrap the same core in OpenAI's Agents API rather than duplicating council prompts.

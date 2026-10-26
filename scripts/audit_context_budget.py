@@ -35,6 +35,7 @@ def main() -> int:
         "core/playbooks/index.md": 300,
         "core/protocols/memory-scopes.md": 180,
         "core/protocols/orchestration.md": 240,
+        "core/protocols/council-session.md": 300,
         "core/protocols/quality-gates.md": 210,
         "core/protocols/research.md": 160,
         "core/templates/specialist-brief.md": 60,
@@ -51,8 +52,9 @@ def main() -> int:
         "skill": (ROOT / "skills", "*/SKILL.md", 475),
         "employee": (core / "council/employees", "*.md", 250),
         "playbook": (core / "playbooks", "*/*.md", 600),
-        "protocol": (core / "protocols", "*.md", 250),
+        "protocol": (core / "protocols", "*.md", 300),
         "template": (core / "templates", "**/*.md", 250),
+        "claude-agent": (ROOT / "adapters/claude-code/agents", "*.md", 120),
     }
     group_counts: dict[str, dict[str, int]] = {}
     for group, (directory, pattern, maximum) in group_limits.items():

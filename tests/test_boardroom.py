@@ -60,6 +60,30 @@ class BoardroomTests(unittest.TestCase):
                     self.assertTrue((target / "skills/boardroom/SKILL.md").exists())
                     if provider == "claude":
                         self.assertTrue((target / "agents/boardroom-critic.md").exists())
+                        self.assertTrue((target / "agents/boardroom-specialist.md").exists())
+
+    def test_council_session_is_enforced_and_bounded(self) -> None:
+        skill = (ROOT / "skills/boardroom/SKILL.md").read_text(encoding="utf-8")
+        session = (ROOT / "core/protocols/council-session.md").read_text(encoding="utf-8")
+        orchestration = (ROOT / "core/protocols/orchestration.md").read_text(encoding="utf-8")
+        quality = (ROOT / "core/protocols/quality-gates.md").read_text(encoding="utf-8")
+
+        self.assertIn("both are mandatory", skill)
+        self.assertIn("selecting employees without deliberation is not Council execution", orchestration)
+        for state in (
+            "`staffed`",
+            "`opened`",
+            "`positioned`",
+            "`mapped`",
+            "`deliberated`",
+            "`subcommittees-complete`",
+            "`reconciled`",
+            "`closed`",
+        ):
+            self.assertIn(state, session)
+        self.assertIn("No Council/Program answer may skip", session)
+        self.assertIn("only user-facing participant", orchestration)
+        self.assertIn("completed every required `council-session.md` state", quality)
 
     def test_foundational_reframing_capability_is_active_and_complete(self) -> None:
         playbook = ROOT / "core/playbooks/business/foundational-reframing.md"

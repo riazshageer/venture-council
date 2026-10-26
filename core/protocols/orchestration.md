@@ -2,6 +2,8 @@
 
 Use only for Council and Program work.
 
+The Team Lead owns every transition and is the only user-facing participant. Load and complete `council-session.md`; selecting employees without deliberation is not Council execution.
+
 ## Plan once
 
 Record the decision, outputs, selected specialists, dependencies, evidence needs, stopping condition, and relative cost. Use one shared brief. Each specialist receives a short delta containing only relevant facts, constraints, decision criteria, exclusions, and output.
@@ -17,7 +19,7 @@ A report should contain only:
 3. material alternative, risk, or dependency;
 4. decision or next action.
 
-Default to one pass. Ask for revision only when a missing fact could change the decision. Parallelize independent work; create a subcommittee only when participants must exchange findings. Keep one writer for shared files.
+Parallelize independent first positions. Create a subcommittee when specialists must jointly resolve one artifact or dependency. Keep one writer for shared files.
 
 ## Reconcile by exception
 

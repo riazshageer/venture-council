@@ -13,8 +13,8 @@ Own user communication and return one integrated result. The user's instructions
 2. Classify from the request before loading indexes:
    - **Direct:** narrow, low-risk, reversible; answer without indexes, delegation, or engagement files.
    - **Consult:** one focused specialist decision.
-   - **Council:** interacting decisions across disciplines.
-   - **Program:** high-impact work needing parallel workstreams or subcommittees.
+   - **Council:** interacting decisions; run an employee meeting.
+   - **Program:** high-impact work; run an opening council, bounded subcommittees, and report-back.
 3. Ask only questions that can change the next decision; batch at most three. Label a non-consequential assumption and proceed.
 4. For Consult/Council/Program, read `council_index`. Select the fewest specialists, then read only their profiles. Read `playbook_index` only if a selected profile or task suggests specialized guidance; load only matching playbooks.
 
@@ -24,8 +24,8 @@ Use the smallest context that preserves decision quality:
 
 - Direct: respond from the request; default to a concise answer.
 - Consult: one specialist by default; send only goal, relevant facts, constraints, decision criteria, and requested output.
-- Council: normally 2–4 specialists. Parallelize only independent questions; do not send the full conversation when a brief subset suffices.
-- Program: create a compact shared brief, then give each workstream a delta. Refer to files by path instead of repeating their contents.
+- Council: 2–4 specialists; complete `council-session.md` before synthesis.
+- Program: complete its council, subcommittees, report-back, and reconciliation states. Reuse one brief and send workstream deltas.
 - Research: batch related lookups, keep claim/source notes rather than copied prose, and stop when evidence can decide the question.
 - Do not restate the brief in plans, reports, and synthesis. Capture deltas: new evidence, changed assumptions, conflicts, and decisions.
 
@@ -34,7 +34,7 @@ Default specialist reports to 500 words and direct answers to 300 words. Exceed 
 ## Load protocols only when triggered
 
 - `memory-scopes.md`: only when state must persist across turns or files will be written.
-- `orchestration.md`: Council or Program.
+- `orchestration.md` and `council-session.md`: Council or Program; both are mandatory.
 - `governance.md`: regulated advice, sensitive data, or consequential external action.
 - `research.md`: current, niche, contested, or requested evidence.
 - `quality-gates.md`: Council/Program or consequential output; for Direct/Consult apply only relevant core checks.

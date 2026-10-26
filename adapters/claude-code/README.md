@@ -16,4 +16,4 @@ python3 scripts/package_boardroom.py claude dist/boardroom-claude
 
 The generated directory is also a complete global installer source. After extracting it, run its `scripts/install_global.py --provider claude` command. Installing only the plugin manifest does not initialize the writable global knowledge store.
 
-The two optional subagents isolate source-heavy research and adversarial review. The Team Lead remains responsible for selection and synthesis. Map capability tiers only to models currently available in the installation.
+The optional generic specialist, researcher, and critic agents isolate bounded work. The Team Lead alone staffs meetings, controls transitions, reconciles, and answers the user. Map capability tiers only to models currently available in the installation.
