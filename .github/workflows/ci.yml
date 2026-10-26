@@ -44,3 +44,18 @@ jobs:
             $errors | ForEach-Object { Write-Error $_ }
             exit 1
           }
+
+  quality-gate:
+    name: Quality gate
+    if: always()
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require every platform test
+        env:
+          TEST_RESULT: ${{ needs.test.result }}
+        run: |
+          if [ "$TEST_RESULT" != "success" ]; then
+            echo "One or more cross-platform test jobs failed or were cancelled." >&2
+            exit 1
+          fi
