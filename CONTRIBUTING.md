@@ -87,6 +87,8 @@ Push the branch to your fork and open a pull request into `main`. Complete the p
 
 Pull requests require review and the repository's `Quality gate` check. Direct pushes and force pushes to `main` are blocked.
 
+The applied `main` policy is recorded in `.github/branch-protection.json`. Repository administrators retain emergency bypass authority for recovery and initial single-maintainer operation; ordinary changes must still use pull requests.
+
 ## Council knowledge contributions
 
 Employees and playbooks require more than plausible prose. Include authoritative source IDs, freshness metadata, professional boundaries, and evidence that the addition fills a genuine gap. Never contribute client-confidential or repository-specific information to global council knowledge.
