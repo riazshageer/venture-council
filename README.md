@@ -26,10 +26,12 @@ Boardroom chooses the smallest sufficient execution shape:
 |---|---|
 | Direct | Narrow, low-risk work the Team Lead can handle from broad knowledge |
 | Consult | One or two focused specialist questions |
-| Council | Several interacting disciplines that need reconciliation |
-| Program | Complex/high-impact work requiring bounded parallel workstreams or subcommittees |
+| Council | A Team Lead-chaired meeting with independent employee positions, targeted deliberation, and reconciliation |
+| Program | An opening council, bounded subcommittees, report-back, reconciliation, and final Team Lead decision |
 
 Employees are not fictional executives whose opinions are generated for entertainment. Each receives a bounded question, relevant context, an expected artifact, evidence requirements, and a stopping condition. The Team Lead resolves conflicts against the user's goals and records material dissent.
+
+Council and Program are enforced meeting workflows, not labels for a longer answer. The Team Lead staffs and opens the meeting, obtains independent position cards before employees see one another's conclusions, maps only material conflicts and dependencies, runs a targeted deliberation round, commissions joint subcommittees where needed, and alone makes the integrated user-facing decision. Runtimes with collaboration tools use bounded specialist workers; other runtimes preserve the same states with isolated sequential position cards. Users receive the decision and material dissent, not a role-play transcript.
 
 For consequential business-model work, the Team Lead also screens for structural signals: healthy demand with weak firm economics, conflict between unit and system economics, a growth-limiting control right or capital burden, value captured elsewhere in the ecosystem, or a secondary asset that compounds through ordinary operations. When triggered, the Business Strategist must compare the strongest conventional path with at least two genuinely different structural hypotheses, test their economics and risks, and submit the recommendation to an independent critic. Routine work skips this process, and the conventional path is allowed to win.
 
@@ -116,7 +118,7 @@ ${XDG_DATA_HOME}/boardroom     # when XDG_DATA_HOME is set
 
 Set `BOARDROOM_HOME` before installation and use to choose a different location. The installer places replaceable runtime files under `app/`, writable shared knowledge under `core/`, the previous bundled baseline under `bundled-core/`, conflicts under `conflicts/`, and knowledge-change history under `audit/`.
 
-It registers global skills at `${CODEX_HOME}/skills` or `~/.codex/skills` for Codex and `~/.claude/skills` for Claude Code. Claude's optional researcher and critic agents are registered under `~/.claude/agents`. Unix installations use managed symbolic links. Windows installations use managed copies so Developer Mode and administrator symlink privileges are not required.
+It registers global skills at `${CODEX_HOME}/skills` or `~/.codex/skills` for Codex and `~/.claude/skills` for Claude Code. Claude's optional generic specialist, researcher, and critic agents are registered under `~/.claude/agents`. Unix installations use managed symbolic links. Windows installations use managed copies so Developer Mode and administrator symlink privileges are not required.
 
 After installation, Boardroom is available from any repository. Ask naturally:
 
@@ -204,7 +206,7 @@ dist/boardroom-claude/
 └── skills/
 ```
 
-After extracting or entering the generated directory, run `python3 scripts/install_global.py --provider claude`. The installation adds optional isolated research and critic subagents; the Team Lead still owns staffing and synthesis.
+After extracting or entering the generated directory, run `python3 scripts/install_global.py --provider claude`. The installation adds optional generic specialist, research, and critic subagents; the Team Lead still owns staffing, meeting transitions, reconciliation, and synthesis.
 
 ## Global knowledge and repository memory
 
@@ -345,8 +347,8 @@ The release workflow runs when a tag matching `v*` is pushed. It requires the ta
 
 ```bash
 # After updating VERSION and merging a release-ready commit:
-git tag v1.4.1
-git push origin v1.4.1
+git tag v1.5.0
+git push origin v1.5.0
 ```
 
 The remote installers always download the assets from the latest published release. Test release candidates before moving the latest release pointer.
